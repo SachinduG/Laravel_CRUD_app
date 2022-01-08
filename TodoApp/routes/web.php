@@ -8,9 +8,8 @@ Route::get('/', function () {
 });
 
 Route::get('/todos', function () {
-    $data=App\Models\Todo::all();
+    $data = App\Models\Todo::all();
     return view('todos')->with('todos', $data);
-    
 });
 
 Route::post('/saveTodo', [TodoController::class, 'save']);

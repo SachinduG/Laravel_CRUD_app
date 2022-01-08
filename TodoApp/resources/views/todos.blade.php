@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,17 +8,18 @@
     <title>Todo App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
+
 <body>
     <div class="container">
         <div class="text-center">
             <h1>Daily Todos</h1>
             <div class="row">
                 <div class="col-md-12">
-                <br />
+                    <br />
                     @foreach($errors->all() as $error)
-                        <div class="alert alert-danger" role="alert">
-                            {{$error}}
-                        </div>
+                    <div class="alert alert-danger" role="alert">
+                        {{$error}}
+                    </div>
                     @endforeach
                     <form method="post" action="/saveTodo" id="selectform">
                         {{csrf_field()}}
@@ -38,18 +40,18 @@
                             <td>{{$todo->id}}</td>
                             <td>{{$todo->todos}}</td>
                             <td>
-                            @if($todo->iscompleted)
+                                @if($todo->iscompleted)
                                 <button class="btn btn-success">Completed</button>
-                            @else
+                                @else
                                 <button class="btn btn-warning">Not Completed</button>
-                            @endif
+                                @endif
                             </td>
                             <td>
-                            @if(!$todo->iscompleted)
-                                <a href="/markascompleted/{{$todo->id}}" class="btn btn-primary">Mark As Completed</a> 
-                            @else
-                                <a href="/markasnotcompleted/{{$todo->id}}" class="btn btn-secondary">Mark As Not Completed</a> 
-                            @endif
+                                @if(!$todo->iscompleted)
+                                <a href="/markascompleted/{{$todo->id}}" class="btn btn-primary">Mark As Completed</a>
+                                @else
+                                <a href="/markasnotcompleted/{{$todo->id}}" class="btn btn-secondary">Mark As Not Completed</a>
+                                @endif
                                 <a href="/deletetodo/{{$todo->id}}" class="btn btn-danger">Delete Todo</a>
                                 <a href="/updatetodo/{{$todo->id}}" class="btn btn-warning">Update Todo</a>
                             </td>
@@ -61,4 +63,5 @@
         </div>
     </div>
 </body>
+
 </html>
